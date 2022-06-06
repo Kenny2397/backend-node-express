@@ -33,6 +33,22 @@ app.get('/categories/:categoryId/products/:productId', (req, res) => {
         categoryId,
         productId
     });
+});   
+
+// query params usado para filtros
+// http://localhost:8000/users?name=kenny&email=k@cd.com
+app.get('/users', (req, res) => {
+    const { name, email } = req.query;
+
+    if(name || email) {
+        res.json({
+            name,
+            email
+        });
+    }else{
+        res.send('no hay parametros query');
+    }
+
 });
 
 app.listen(8000, () => {
